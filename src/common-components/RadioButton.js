@@ -13,9 +13,8 @@ const RadioButton = ({ field, fieldKey, setValue }) => {
               name="notification-method"
               type="radio"
               value={option}
-              checked={field.value}
               className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600 cursor-pointer"
-              onClick={setValue}
+              onChange={setValue}
             />
             <label
               className="block text-sm font-medium leading-6 text-gray-900"
