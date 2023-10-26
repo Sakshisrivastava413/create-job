@@ -9,7 +9,7 @@ const InputBox = ({ fieldKey, field, setValue }) => {
         <input
           id={fieldKey}
           required
-          value={field.value}
+          type={field.type}
           onChange={setValue}
           placeholder={field.placeholder}
           className="block w-full rounded-[5px] border py-2 px-3 text-grey-2 text-sm border-[#E6E6E6]"

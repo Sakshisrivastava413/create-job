@@ -18,6 +18,9 @@ module.exports = {
         "grey-2": "var(--font-grey-27-a-7-a-7-a, #7A7A7A)",
         "card-border": "var(--elements-color-card-border-e-6-e-6-e-6, #E6E6E6)",
       },
+      fontFamily: {
+        display: ["Poppins"],
+      },
     },
   },
   plugins: [],

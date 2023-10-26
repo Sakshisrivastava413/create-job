@@ -24,6 +24,7 @@ export default function Index() {
   const [screen, setScreen] = useState(screenState.none);
   const [data, setData] = useState([]);
   const [editId, setEditId] = useState(null);
+  const [error, setError] = useState("");
 
   const fetchJobs = () => {
     setScreen(screenState.loading);
@@ -34,6 +35,7 @@ export default function Index() {
         setScreen(screenState.none);
       })
       .catch((error) => {
+        setError(error.message);
         setScreen(screenState.error);
       });
   };
@@ -56,6 +58,7 @@ export default function Index() {
         fetchJobs();
       })
       .catch((error) => {
+        setError(error.message);
         setScreen(screenState.error);
       });
   };
@@ -70,6 +73,7 @@ export default function Index() {
         fetchJobs();
       })
       .catch((error) => {
+        setError(error.message);
         setScreen(screenState.error);
       });
   };
@@ -81,6 +85,7 @@ export default function Index() {
         fetchJobs();
       })
       .catch((error) => {
+        setError(error.message);
         setScreen(screenState.error);
       });
   };
@@ -158,8 +163,12 @@ export default function Index() {
       }
   };
 
-  if (screen === screenState.loading) return <p>Loading...</p>;
-  if (screen === screenState.error) return <p>Error!</p>;
+  const centerStyle = "flex w-full mt-10 justify-center items-center";
+
+  if (screen === screenState.loading)
+    return <p className={centerStyle}>Loading...</p>;
+  if (screen === screenState.error)
+    return <p className={centerStyle}>Error! {error}</p>;
   if (pageState === pageStates.step1 || pageState === pageStates.step2)
     return (
       <StepsForm handleNext={handleNext} setValue={setValue} {...stepProps} />
@@ -168,5 +177,9 @@ export default function Index() {
     return (
       <Home data={data} handleEdit={handleEdit} handleDelete={handleDelete} />
     );
-  return <Button title={"Create job"} onClick={handleNext} />;
+  return (
+    <div className={centerStyle}>
+      <Button title={"Create job"} onClick={handleNext} />
+    </div>
+  );
 }
